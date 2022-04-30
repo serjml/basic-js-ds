@@ -57,7 +57,6 @@ class BinarySearchTree {
         return hasWithin(node.right, data);
       }
     }
-
   }
 
   find(data) {
@@ -111,9 +110,9 @@ class BinarySearchTree {
 
         let maxLeftNode = node.left;
         while (maxLeftNode.right) {
-          node.left = maxLeftNode.right;
+          maxLeftNode = maxLeftNode.right;
         }
-        node.data = node.left.data;
+        node.data = maxLeftNode.data;
         node.left = removeNode(node.left, maxLeftNode.data);
 
         return node;
@@ -126,7 +125,7 @@ class BinarySearchTree {
       return null;
     }
 
-    let minimal = rhis.base;
+    let minimal = this.base;
     while (minimal.left) {
       minimal = minimal.left;
     }
@@ -139,10 +138,10 @@ class BinarySearchTree {
     }
 
     let maximal = this.base;
-    while (maximal.rigth) {
+    while (maximal.right) {
       maximal = maximal.right;
     }
-    return maximal.date;
+    return maximal.data;
   }
 }
 
